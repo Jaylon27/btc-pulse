@@ -1,10 +1,14 @@
 import requests
 import sqlite3
 import datetime
+import os
+
+# Get the directory where pipeline.py lives
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 URL = "https://api.kraken.com/0/public/Ticker"
 PARAMS = {"pair": "XBTUSD"}
-DB_NAME = "bitcoin_price_data.db" 
+DB_NAME = os.path.join(BASE_DIR, "bitcoin_price_data.db")
 
 def init_db():
     """Creates the SQLite database and table if they do not exist."""
